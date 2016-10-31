@@ -25,4 +25,8 @@ DOM.create = function (obj) {
 	return element;
 }
 
+DOM.setTitle = function (title) {
+	document.title = title;
+}
+
 module.exports = DOM;

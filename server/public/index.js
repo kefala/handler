@@ -1,18 +1,27 @@
 class HomeView extends hk.View {
 	constructor () {
 		super({
-			view: "me"
 		});	
 
 	}
 }
 
-
 var Router = new hk.Router({
 	index: {
-		route: '/',
-		view: new HomeView()
+		slug: '/',
+		view: HomeView,
+		title: "Home"
+	},
+	qs: {
+		slug: '/quienes-somos',
+		view: HomeView,
+		title: "Quienes Somos"
+	},
+	contact: {
+		slug: '/contacto/{id}',
+		view: HomeView,
+		title: "Contacto"
 	}
 }, hk.DOM);
 
-Router.start();
+Router.start(location.pathname);
