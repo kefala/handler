@@ -1,5 +1,5 @@
 //import all
-
+"use strict";
 
 var Router = require('./Router/Router.js');
 var DOM = require('./View/DOM.js');

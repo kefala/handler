@@ -1,5 +1,6 @@
+"use strict";
 
-DOM = {};
+var DOM = {};
 
 DOM.isReady = function () {
 	return (document.readyState === "complete");

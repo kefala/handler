@@ -1,23 +1,27 @@
+"use strict";
+
+var builder = require('./builder');
+
 class Router {
 	
 	constructor (routes, DOM) {
-		console.log(routes, DOM);
 		this.routes = routes;
 		this.DOM = DOM;
 	}
 
 	start (name) {
-		var ready = this.ready.bind(this);
+		var onReady = this.onReady.bind(this),
+			isReady = this.DOM.isReady.bind(this);
 
 		var interval = setInterval(function(){ 
-			if (DOM.isReady()) {
+			if (isReady()) {
 				clearInterval(interval);
-				ready(name);
+				onReady(name);
 			}
-		}, 1);
+		}, 100);
 	}
 
-	ready (slug) {
+	onReady (slug) {
 		console.log(slug);
 		var arrSlug = slug.split("/");
 		console.log(arrSlug);
@@ -50,13 +54,11 @@ class Router {
 
 	goTo (name, params) {
 		for (var item in this.routes) {
-			console.log(item);
 			if (item === name) {
 				this.go(this.routes[name], params);
 				return;
 			}
 		}
-		
 		throw "No se encontró la ruta buscada";
 	}
 }
