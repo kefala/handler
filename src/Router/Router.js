@@ -1,65 +1,68 @@
 "use strict";
 
-var builder = require('./builder');
-
 class Router {
 	
 	constructor (routes, DOM) {
 		this.routes = routes;
 		this.DOM = DOM;
+		this.parseInitial();
 	}
 
-	start (name) {
+	parseInitial () {
+		var tmp;
+		for (var route in this.routes) {
+			tmp = this.routes[route].slug.split("/");
+			tmp = tmp.slice(1);
+			this.routes[route].parse = tmp;
+		}
+	}
+
+	start (slug) {
 		var onReady = this.onReady.bind(this),
-			isReady = this.DOM.isReady.bind(this);
+		isReady = this.DOM.isReady.bind(this);
 
 		var interval = setInterval(function(){ 
 			if (isReady()) {
 				clearInterval(interval);
-				onReady(name);
+				onReady(slug);
 			}
 		}, 100);
 	}
 
 	onReady (slug) {
-		console.log(slug);
-		var arrSlug = slug.split("/");
-		console.log(arrSlug);
+		//discomponent route and identifier
+		var route = this.unbuild(slug);
 
-		for (var i = arrSlug.length - 1; i >= 0; i--) {
-			if (arrSlug[i] === "") {
-				arrSlug.splice(i, 1);
-			}
+		if (route === null) {
+			throw "No se encontró la url";
 		}
 
-		if (arrSlug.length) {
-			this.goTo("index");				
-		}
-
-/*
-		for (var item in this.routes) {
-			console.log(name);
-			if (this.routes[item] === slug) {
-			}
-		}
-*/
-		//this.go();
+		this.go(route, slug);
 	}
 
-	go (route, params) {
-		console.log("Sra", route);
-		history.pushState(null, route.name, route.slug);
+	go (route, slug) {
+		//build the route with params
+		history.pushState(null, route.title, slug);
 		this.DOM.setTitle(route.title);
 	}
 
 	goTo (name, params) {
-		for (var item in this.routes) {
-			if (item === name) {
-				this.go(this.routes[name], params);
-				return;
+		//discomponent route and identifier
+	}
+
+	build (route, params) {
+		
+	}
+
+	unbuild (slug) {
+		var routeUnbuild = slug.split("/");
+		routeUnbuild = routeUnbuild.slice(1);
+		for (var route in this.routes) {
+			if (this.routes[route].parse[0] === routeUnbuild[0]) {
+				return this.routes[route];
 			}
 		}
-		throw "No se encontró la ruta buscada";
+		return null;
 	}
 }
 

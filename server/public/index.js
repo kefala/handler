@@ -18,7 +18,7 @@ var Router = new hk.Router({
 		title: "Quienes Somos"
 	},
 	contact: {
-		slug: '/contacto/{id}',
+		slug: '/contacto',
 		view: HomeView,
 		title: "Contacto"
 	}
