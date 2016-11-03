@@ -3,15 +3,17 @@
 class Component {
 
 	constructor (params) {
-		var child = null;
-		console.log(params);
 		this.el = params.el
-		if (params.childs) {
-			for(child in params.childs) {
-				this.el.appendChild(params.childs[child].el);
+		this.childs = (params.childs) ? params.childs : null;
+		this.render();
+	}
+
+	render () {
+		var child = null;
+		if (this.childs !== null) {
+			for(child in this.childs) {
+				this.el.appendChild(this.childs[child].el);
 			}
-		} else {
-			this.child = null;
 		}
 	}
 
