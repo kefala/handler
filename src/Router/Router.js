@@ -5,10 +5,10 @@ class Router {
 	constructor (routes, DOM) {
 		this.routes = routes;
 		this.DOM = DOM;
-		this.parseInitial();
+		this.initial();
 	}
 
-	parseInitial () {
+	initial () {
 		var tmp;
 		for (var route in this.routes) {
 			tmp = this.routes[route].slug.split("/");
@@ -42,6 +42,8 @@ class Router {
 
 	go (route, slug) {
 		//build the route with params
+		var view = new route.view();
+		view.render();	
 		history.pushState(null, route.title, slug);
 		this.DOM.setTitle(route.title);
 	}
