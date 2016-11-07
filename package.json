@@ -1,0 +1,25 @@
+{
+  "name": "handler-kefala",
+  "version": "1.0.2",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kefala/handler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kefala/handler/issues"
+  },
+  "homepage": "https://github.com/kefala/handler#readme",
+  "dependencies": {
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "webpack": "^1.13.3"
+  }
+}
