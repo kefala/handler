@@ -3,7 +3,6 @@
 class View {
 
 	constructor (inst) {
-		
 		this.components = (inst.components) ? inst.components : null;
 		this.isRender = false;
 		if (hk.DOM.mainBox === null) {
