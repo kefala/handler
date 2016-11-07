@@ -148,6 +148,8 @@
 	
 	DOM.mainBox = null;
 	
+	DOM.idMainBox = null;
+	
 	DOM.isReady = function () {
 		return (document.readyState === "complete");
 	};
@@ -190,11 +192,18 @@
 	class View {
 	
 		constructor (inst) {
-			
 			this.components = (inst.components) ? inst.components : null;
 			this.isRender = false;
 			if (hk.DOM.mainBox === null) {
-				hk.DOM.mainBox = document.body;
+				if (hk.DOM.idMainBox === null) {
+					hk.DOM.mainBox = document.body;
+				} else {
+					if (document.getElementById(hk.DOM.idMainBox) === null) {
+						hk.DOM.mainBox = document.body;
+					} else {
+						hk.DOM.mainBox = document.getElementById(hk.DOM.idMainBox);
+					}
+				}
 			}
 		}
 	

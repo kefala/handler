@@ -4,6 +4,8 @@ var DOM = {};
 
 DOM.mainBox = null;
 
+DOM.idMainBox = null;
+
 DOM.isReady = function () {
 	return (document.readyState === "complete");
 };

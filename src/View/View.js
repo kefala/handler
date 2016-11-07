@@ -6,7 +6,15 @@ class View {
 		this.components = (inst.components) ? inst.components : null;
 		this.isRender = false;
 		if (hk.DOM.mainBox === null) {
-			hk.DOM.mainBox = document.body;
+			if (hk.DOM.idMainBox === null) {
+				hk.DOM.mainBox = document.body;
+			} else {
+				if (document.getElementById(hk.DOM.idMainBox) === null) {
+					hk.DOM.mainBox = document.body;
+				} else {
+					hk.DOM.mainBox = document.getElementById(hk.DOM.idMainBox);
+				}
+			}
 		}
 	}
 

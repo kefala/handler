@@ -20,6 +20,8 @@ class HomeView extends hk.View {
 	}
 }
 
+hk.DOM.idMainBox = "main-content";
+
 var Router = new hk.Router({
 	index: {
 		slug: '/',
