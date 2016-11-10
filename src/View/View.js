@@ -30,8 +30,6 @@ class View {
 		for (component in this.components) {
 			hk.DOM.mainBox.appendChild(this.components[component].el);
 		}
-
-		console.log(this.components.navbar);
 	}
 }
 
