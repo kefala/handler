@@ -168,7 +168,7 @@
 			}
 	
 			if (param.text) {
-				element.textContent = param.text;		
+				element.innerText = param.text;		
 			}
 		}
 		if (element === null) {
