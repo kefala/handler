@@ -13,4 +13,8 @@ hk.DOM 			= DOM;
 hk.View			= View;
 hk.Component	= Component;
 
-window.hk = hk;
+if (typeof(window) !== "undefined") {
+	window.hk = hk;
+}
+
+module.exports = hk;
