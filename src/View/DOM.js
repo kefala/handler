@@ -12,11 +12,15 @@ DOM.isReady = function () {
 
 DOM.create = function (param) {
 	var element = null;
+	var classes = null;
 	if (param.el) {
 		element = document.createElement(param.el);
 
 		if (param.classes) {
-			element.classList.add(param.classes);
+			classes = param.classes.split(" ");
+			classes.forEach(function(className) {
+				element.classList.add(className);
+			});
 		}
 
 		if (param.id) {

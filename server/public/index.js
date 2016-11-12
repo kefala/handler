@@ -5,15 +5,15 @@ class HomeView extends hk.View {
 		super({
 			components: {
 				navbar: new hk.Component({
-					el: hk.DOM.create({el: "p", class: "texto",text: "Facha"}),
+					el: hk.DOM.create({el: "p", classes: "texto con varias classes",text: "Facha"}),
 					childs: {
 						button: new hk.Component({
-							el: hk.DOM.create({el: "button", text: "kkk", class: "btn"})
+							el: hk.DOM.create({el: "button", text: "kkk", classes: "btn"})
 						})
 					} 
 				}),
 				title: new hk.Component({
-					el: hk.DOM.create({el: "h1", text: "Mucha facha", class: "title"})
+					el: hk.DOM.create({el: "h1", text: "Mucha facha", classes: "title"})
 				})
 			}
 		});	
