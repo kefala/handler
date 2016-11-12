@@ -60,6 +60,8 @@
 	hk.Component	= Component;
 	
 	window.hk = hk;
+	
+	module.exports = hk;
 
 /***/ },
 /* 1 */
